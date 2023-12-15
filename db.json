@@ -53,6 +53,12 @@
       "name": "Christopher Robin",
       "image": "https://upload.wikimedia.org/wikipedia/en/e/e1/Christopherrobin.jpg",
       "age": 9
+    },
+    {
+      "name": "Fishie Oil",
+      "image": "https://www.health.com/thmb/3gGA01qQ1luJlPremCfOVtu-idk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Best-Fish-Oil-Supplements-HLT-tout-8549dc72375549f982ded920df12cab8.jpg",
+      "age": "10",
+      "id": 10
     }
   ]
 }

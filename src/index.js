@@ -1,5 +1,15 @@
 // fetches information from API endpoint and processes it into usable code
 // TODO: write GET request here
+//using console.log in places helps debug the code throughout so there are less mistakes,
+//but can also help with less errors and finding them quicker
+//could have made the http a const called url and put it in where the fetches are
+
+fetch ("http://localhost:3000/characters")
+    .then ((resp) => resp.json())
+    //.then ((data) => console.log(data)) //this should be next
+    //as this would be to make sure
+    //there are no errors in this part of the code
+    .then ((data) => renderCharacters(data))
 
 function renderCharacters(charArr) {
     // console.log(charArr)
@@ -32,3 +42,36 @@ function renderCharacters(charArr) {
 
     })
 }
+
+// named function will be handleAddNewChar
+
+const form = document.querySelector('form')
+//console.log(form)
+
+form.addEventListener('submit', (e) => handleAddNewChar(e))
+
+function handleAddNewChar(e){
+    e.preventDefault()
+    //console.log(e.target.age.value)
+
+    let newCharObj = {
+       name : e.target.name.value,
+       image : e.target.image.value,
+       age : e.target.age.value,
+    }
+    
+    //console.log(newCharObj)
+
+    fetch ("http://localhost:3000/characters", {
+        method: 'POST',
+        headers : {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(newCharObj)
+    })
+        .then ((resp) => resp.json())
+        .then((data) => renderCharacters([data]))
+}
+
+//post is a type of fetch that has some extra stuff compared to a get
